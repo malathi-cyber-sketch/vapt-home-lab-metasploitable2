@@ -122,7 +122,7 @@ The target's IP was confirmed directly on Metasploitable2 using `ip a`.
 
 **Target IP: `192.168.1.10`**
 
-![Metasploitable2 IP](./screenshots/meta_2_ip.png)
+![Metasploitable2 IP](./screenshots/meta%202%20ip.png)
 *Metasploitable2 terminal output — eth0 assigned IP 192.168.1.10, confirmed reachable from Kali Linux.*
 
 ---
@@ -135,7 +135,7 @@ sudo nmap 192.168.1.10
 
 Result: **20+ open ports** discovered — FTP (21), SSH (22), Telnet (23), HTTP (80), SMB (139/445), MySQL (3306), and more.
 
-![Nmap basic scan](./screenshots/nmap_scan_on_target.png)
+![Nmap basic scan](./screenshots/nmap%20scan%20on%20target.png)
 *Nmap basic scan — 977 closed ports filtered, 20+ open ports revealed. Every open port is a potential entry point.*
 
 ---
@@ -148,10 +148,10 @@ sudo nmap 192.168.1.10 -sV
 
 Exact software versions identified. Several are immediately critical with known backdoors and RCE vulnerabilities.
 
-![Nmap version scan part 1](./screenshots/nmap_version.png)
+![Nmap version scan part 1](./screenshots/nmap%20version.png)
 *Nmap -sV scan part 1 — vsftpd 2.3.4 (backdoored, CVE-2011-2523), Apache 2.2.8, OpenSSH 4.7p1, Samba 3.X (RCE), ProFTPD 1.3.1.*
 
-![Nmap version scan part 2](./screenshots/nmap_version_2.png)
+![Nmap version scan part 2](./screenshots/nmap%20version%202.png)
 *Nmap -sV scan part 2 — UnrealIRCd (backdoor, CVE-2010-2075), Apache Tomcat 1.1, MySQL 5.0.51a, PostgreSQL 8.3.0, VNC. Scan completed in 23.39 seconds.*
 
 ---
@@ -168,7 +168,7 @@ nikto -h http://192.168.1.7
 
 Nikto immediately identified the web server version, PHP version exposure, directory indexing, and multiple missing security headers.
 
-![Nikto terminal scan](./screenshots/nikto_1.png)
+![Nikto terminal scan](./screenshots/nikto%201.png)
 *Nikto v2.6.0 scan — Apache/2.2.8 (Ubuntu), PHP/5.2.4 version disclosed, /icons/ directory indexing enabled, mod_negotiation MultiViews (brute-force risk), missing Referrer-Policy and Permissions-Policy headers.*
 
 ---
@@ -181,7 +181,7 @@ nikto -h http://192.168.1.7 -o nikto_report.html -Format htm
 
 The report was saved as a structured HTML file for professional documentation.
 
-![Nikto save output command](./screenshots/save_output.png)
+![Nikto save output command](./screenshots/save%20output.png)
 *Nikto scan with `-o nikto_report.html -Format htm` flag — saving all 30 findings to an HTML report. Scan ran 460 seconds, sent 8242 requests.*
 
 ---
@@ -190,10 +190,10 @@ The report was saved as a structured HTML file for professional documentation.
 
 The generated HTML report was opened in Firefox for review and documentation.
 
-![Nikto HTML report - part 1](./screenshots/firefox_nikto.png)
+![Nikto HTML report - part 1](./screenshots/firefox%20nikto.png)
 *Nikto HTML report — Target: 192.168.1.7:80 / Apache 2.2.8. Findings: PHP 5.2.4 version exposed, /icons/ directory indexing, Apache mod_negotiation MultiViews enabled (filename brute-force risk), missing security headers.*
 
-![Nikto HTML report - part 2](./screenshots/nikto_4.png)
+![Nikto HTML report - part 2](./screenshots/nikto%204.png)
 *Nikto HTML report continued — phpMyAdmin README publicly exposed, X-Frame-Options header deprecated/missing, X-Content-Type-Options header not set. Scan summary: 8242 requests, 16 errors, 30 findings in 460 seconds.*
 
 **Key Nikto Findings Summary:**
@@ -226,7 +226,7 @@ ZAP 2.17.0 by Checkmarx was launched from the terminal. The application loaded a
 
 On first launch, ZAP prompts whether to persist the session. A new temporary session was started for this engagement.
 
-![ZAP session dialog](./screenshots/z_2nd.png)
+![ZAP session dialog](./screenshots/z%202nd.png)
 *ZAP session persistence dialog — "No, I do not want to persist this session" selected. New root CA certificate created for intercepting HTTPS traffic.*
 
 ---
@@ -235,7 +235,7 @@ On first launch, ZAP prompts whether to persist the session. A new temporary ses
 
 ZAP Automated Scan was configured with the target URL. Traditional spider and AJAX spider with Firefox were enabled.
 
-![ZAP automated scan setup](./screenshots/zap_3.png)
+![ZAP automated scan setup](./screenshots/zap%203.png)
 *ZAP Automated Scan — target set to http://192.168.1.7. Traditional spider enabled, AJAX spider configured with Firefox. Attack button ready.*
 
 ---
@@ -244,7 +244,7 @@ ZAP Automated Scan was configured with the target URL. Traditional spider and AJ
 
 The spider discovered 657 URLs across the entire Metasploitable2 web application, mapping the complete attack surface.
 
-![ZAP spider running](./screenshots/4th_z.png)
+![ZAP spider running](./screenshots/4th%20z.png)
 *ZAP spider at 33% progress — 657 URLs found, 74 nodes added. GET and POST requests captured across multiple web apps including TWiki. Out-of-scope external links flagged automatically.*
 
 ---
@@ -253,7 +253,7 @@ The spider discovered 657 URLs across the entire Metasploitable2 web application
 
 A targeted spider was run specifically against the DVWA (Damn Vulnerable Web Application).
 
-![ZAP DVWA spider](./screenshots/zap_dvwa.png)
+![ZAP DVWA spider](./screenshots/zap%20dvwa.png)
 *ZAP spider on /dvwa — 100% complete. Discovered: dvwa/login.php, dvwa/css/login.css, dvwa images, robots.txt, sitemap.xml. Login form (POST to login.php) captured for further testing.*
 
 ---
@@ -262,7 +262,7 @@ A targeted spider was run specifically against the DVWA (Damn Vulnerable Web App
 
 A separate spider was run against phpMyAdmin to map the database management interface.
 
-![ZAP phpMyAdmin spider](./screenshots/zap_php.png)
+![ZAP phpMyAdmin spider](./screenshots/zap%20php.png)
 *ZAP spider on /phpMyAdmin — 18 URLs found including POST requests to index.php, CSS resources, and favicon. phpMyAdmin panel fully mapped and exposed without authentication.*
 
 ---
@@ -271,7 +271,7 @@ A separate spider was run against phpMyAdmin to map the database management inte
 
 The Insights tab revealed high memory usage (99%) and important scan statistics about the target.
 
-![ZAP Insights tab](./screenshots/zap_5.png)
+![ZAP Insights tab](./screenshots/zap%205.png)
 *ZAP Insights — High: memory at 99%, 84% of responses returned 200 OK (large attack surface), 10% 3xx redirects, 4% 4xx errors, 1% network failures. 643 ZAP warnings logged.*
 
 ---
@@ -280,10 +280,10 @@ The Insights tab revealed high memory usage (99%) and important scan statistics 
 
 ZAP identified **25 alerts** across the web application. The Alerts panel shows findings with full HTTP context.
 
-![ZAP Hash Disclosure alert detail](./screenshots/zap_6.png)
+![ZAP Hash Disclosure alert detail](./screenshots/zap%206.png)
 *ZAP alert detail — Hash Disclosure MD5 Crypt (Risk: High, Confidence: High). MD5 hash found in HTTP response from /mutillidae/index.php. Evidence: `$1$19256372$KHzgGBLSYvURv2PfLiOST1`. CWE ID: 497. OWASP mapped.*
 
-![ZAP full alerts list](./screenshots/zap_alerts.png)
+![ZAP full alerts list](./screenshots/zap%20alerts.png)
 *ZAP Alerts panel — 25 total alerts. Includes: Hash Disclosure MD5 (High), CSRF missing (Systemic), CSP Header Not Set (Systemic), Directory Browsing (Systemic), Missing Anti-clickjacking Header, Vulnerable JS Library, Private IP Disclosure (35 instances), Auth Requests Identified (8), Info Disclosure in URL — tagged to OWASP_2017_A03 (Sensitive Data Exposure).*
 
 **ZAP Alerts Summary:**
@@ -310,7 +310,7 @@ ZAP identified **25 alerts** across the web application. The Alerts panel shows 
 
 A full HTML report was exported from ZAP and opened in Firefox for documentation.
 
-![ZAP HTML report](./screenshots/report_zap.png)
+![ZAP HTML report](./screenshots/report%20zap.png)
 *ZAP HTML report — generated Thu 25 Jun 2026 at 17:20:08 using ZAP 2.17.0 by Checkmarx. Report contains: Alert Counts by Risk, Alert Counts by Site, Alert Counts by Alert Type, Insights, and full Alerts section.*
 
 ---
@@ -325,7 +325,7 @@ sudo apt install gvm -y
 
 GVM (Greenbone Vulnerability Manager) was installed from the Kali Linux repositories.
 
-![OpenVAS installation](./screenshots/first_screenshot_open_downloading.png)
+![OpenVAS installation](./screenshots/first%20screenshot%20open%20downloading.png)
 *GVM installation — packages: greenbone-security-assistant 26.17.0, gsad 24.16.0, gvm 25.04.3, gvm-tools 25.4.6, libmicrohttpd. Download: 3,540 kB.*
 
 ---
@@ -338,7 +338,7 @@ sudo gvm-start
 
 The GSAD daemon started successfully, serving the web UI at `https://127.0.0.1:9392`.
 
-![GVM start output](./screenshots/2nd_open_vas_start.png)
+![GVM start output](./screenshots/2nd%20open%20vas%20start.png)
 *`gvm-start` output — gsad.service confirmed active (running) since 2026-06-21 08:44:49. HTTPS server started on 127.0.0.1:9392. Main PID: 70489.*
 
 ---
@@ -347,7 +347,7 @@ The GSAD daemon started successfully, serving the web UI at `https://127.0.0.1:9
 
 The Greenbone Security Assistant (GSAD) web interface was accessed via browser.
 
-![OpenVAS login page](./screenshots/open_VAS_web_page.png)
+![OpenVAS login page](./screenshots/open%20VAS%20web%20page.png)
 *OpenVAS Community Edition login page at https://127.0.0.1:9392 — professional web-based vulnerability management interface.*
 
 ---
@@ -356,10 +356,10 @@ The Greenbone Security Assistant (GSAD) web interface was accessed via browser.
 
 After login, the dashboard confirmed the NVT (Network Vulnerability Tests) feed was fully synchronized — **85,755 vulnerability checks** available.
 
-![OpenVAS dashboard NVT feed](./screenshots/open_vas_running.png)
+![OpenVAS dashboard NVT feed](./screenshots/open%20vas%20running.png)
 *OpenVAS dashboard — NVTs by Severity Class (Total: 85,755). Feed sync confirmed successful. Scanner ready for assessment.*
 
-![OpenVAS NVT pie chart](./screenshots/result_today.png)
+![OpenVAS NVT pie chart](./screenshots/result%20today.png)
 *NVT breakdown — Critical: 13,484 | High: 37,025 | Medium: 33,454 | Low: minimal. 85,755 total vulnerability checks loaded.*
 
 ---
@@ -368,7 +368,7 @@ After login, the dashboard confirmed the NVT (Network Vulnerability Tests) feed 
 
 Metasploitable2 was registered as a scan target via Assets → Hosts → New Host.
 
-![Adding target](./screenshots/added_target.png)
+![Adding target](./screenshots/added%20target.png)
 *OpenVAS "New Host" dialog — IP Address: 192.168.1.10, Comment: Metasploitable 2. Target registered for scanning.*
 
 ---
@@ -385,7 +385,7 @@ A scan task was created and configured with the Full and Fast profile.
 | Max NVTs per host | 4 |
 | Max concurrent hosts | 20 |
 
-![Task created successfully](./screenshots/success_added_target.png)
+![Task created successfully](./screenshots/success%20added%20target.png)
 *OpenVAS Tasks view — "Metasploitable2" task created, Status: New. Ready to launch.*
 
 ![Task configuration details](./screenshots/target.png)
